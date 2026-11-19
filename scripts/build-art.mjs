@@ -46,6 +46,20 @@ try {
   for (const f of memos) await copyFile(`memos/${f}`, `public/memos/${f}`);
 } catch { /* no memos yet */ }
 
+// Short links: madebit.studio/<path> forwards to a page hosted elsewhere.
+const REDIRECTS = {
+  'endless-faces/storyboard': 'https://claude.ai/artifact/CtE3hJ3aARcdfsaSumDw6S',
+};
+for (const [path, url] of Object.entries(REDIRECTS)) {
+  await mkdir(`public/${path}`, { recursive: true });
+  await writeFile(`public/${path}/index.html`, `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=${url}"><link rel="canonical" href="${url}">
+<title>Redirecting…</title><script>location.replace(${JSON.stringify(url)})</script></head>
+<body><a href="${url}">Continue</a></body></html>
+`);
+}
+
 // Personal photos for THE DESK slideshow (same photos as the old site's desk)
 await mkdir('public/gallery', { recursive: true });
 for (const f of ['coffee_real', 'concert2', 'automata', 'reading', 'goals', 'icecream', 'me']) {
