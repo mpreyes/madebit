@@ -362,3 +362,4 @@ h1, h2 { margin: 0; font-weight: 400; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+.mail-sent { color: var(--lime); }
