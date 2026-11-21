@@ -6,10 +6,8 @@ const yt = (id: string) => `https://www.youtube-nocookie.com/embed/${id}`;
 
 export const BANDCAMP = 'https://madebit.bandcamp.com/';
 export const EMAIL = 'madebitmusic@gmail.com';
-export const MAILCHIMP_ACTION =
-  'https://madebit.us14.list-manage.com/subscribe/post?u=d920d41bcce61aef97158baf6&id=c3491fafe2';
-// Mailchimp's hidden bot-trap field name for this list
-export const MAILCHIMP_HONEYPOT = 'b_d920d41bcce61aef97158baf6_c3491fafe2';
+// Kit form "Newsletter site" (madebit.kit.com)
+export const KIT_FORM_ACTION = 'https://app.kit.com/forms/10196358/subscriptions';
 
 // Bio + artist statement, from the 2027 EPK.
 export const BIO_SHORT = 'Madebit is the experimental pop & dance project of songwriter & producer Madelyn Reyes.';
