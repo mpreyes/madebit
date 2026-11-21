@@ -1,3 +1,4 @@
+import WelcomeWindow from './components/WelcomeWindow';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { CARTS, type CartId } from './data';
 import { sfx } from './sound';
@@ -59,6 +60,10 @@ function FitRoom({ children }: { children: (ref: React.RefObject<HTMLDivElement>
 }
 
 export default function App() {
+  const [welcome, setWelcome] = useState(() => new URLSearchParams(window.location.search).has('subscribed'));
+  useEffect(() => {
+    if (welcome) window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+  }, [welcome]);
   const [on, setOn] = useState<CartId | null>(null);
   const [dragging, setDragging] = useState(false);
 
@@ -80,6 +85,8 @@ export default function App() {
   const cart = CARTS.find((c) => c.id === on) ?? null;
 
   return (
+    <>
+    {welcome && <WelcomeWindow onClose={() => setWelcome(false)} />}
     <FitRoom>{(room, floor, style) => (
     <div className="room" ref={room} style={style}>
       <header className="top">
@@ -99,5 +106,6 @@ export default function App() {
       </footer>
     </div>
     )}</FitRoom>
+    </>
   );
 }

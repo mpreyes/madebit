@@ -253,3 +253,6 @@ button.knob { border: 0; padding: 0; cursor: pointer; position: relative; transi
 button.knob::after { content: ''; position: absolute; left: 50%; top: 4px; width: 4px; height: 30%; margin-left: -2px; background: #5A5446; border-radius: 2px; }
 button.knob:hover { filter: brightness(1.1); }
 button.knob.turning { box-shadow: inset -6px -6px 0 #6E6656, 0 0 0 4px rgba(247,127,161,.45); }
+/* "you're in" window after confirming email */
+.welcome-backdrop { position: fixed; z-index: 100; }
+.welcome-big { font-family: var(--pixel); font-size: 16px; color: var(--pink); margin-bottom: 14px !important; }
